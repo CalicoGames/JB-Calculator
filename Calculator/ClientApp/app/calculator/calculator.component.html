@@ -1,0 +1,36 @@
+﻿<div class="calc">
+    <div *ngIf="last">
+        <b>Last Calculation:</b> {{last.firstOperand | number:'1.0-10' }} {{last.operator}} {{last.secondOperand | number:'1.0-10'}} = {{last.result | number:'1.0-10' }}
+    </div>
+    <div><b>Input: </b>{{current.firstOperand }} {{current.operator}} {{current.secondOperand }}</div>
+    <table>
+        <tr>
+            <td><button (click)="onClick('A')">AC</button></td>
+            <td><button (click)="onClick('C')">C</button></td>
+        </tr>
+        <tr>
+            <td><button (click)="onClick('9')">9</button></td>
+            <td><button (click)="onClick('8')">8</button></td>
+            <td><button (click)="onClick('7')">7</button></td>
+            <td><button (click)="onClick('÷')">÷</button></td>
+        </tr>
+        <tr>
+            <td><button (click)="onClick('6')">6</button></td>
+            <td><button (click)="onClick('5')">5</button></td>
+            <td><button (click)="onClick('4')">4</button></td>
+            <td><button (click)="onClick('×')">×</button></td>
+        </tr>
+        <tr>
+            <td><button (click)="onClick('3')">3</button></td>
+            <td><button (click)="onClick('2')">2</button></td>
+            <td><button (click)="onClick('1')">1</button></td>
+            <td><button (click)="onClick('−')">−</button></td>
+        </tr>
+        <tr>
+            <td><button (click)="onClick('0')">0</button></td>
+            <td><button (click)="onClick('.')">.</button></td>
+            <td><button (click)="onClick('=')">=</button></td>
+            <td><button (click)="onClick('+')">+</button></td>
+        </tr>
+    </table>
+</div>
