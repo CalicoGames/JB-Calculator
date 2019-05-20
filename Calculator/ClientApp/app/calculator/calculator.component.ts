@@ -52,22 +52,23 @@ export class CalculatorComponent implements OnInit {
         }
         else if (input == '.') {
             if (this.current.operator) {
-                if (!this.current.secondOperand.includes('.')) {
+                if (!this.current.secondOperand) {
+                    // if blank, add zero first.
+                    this.current.secondOperand = '0';
+                }
+                if (this.current.secondOperand && !this.current.secondOperand.includes('.')) {
                     // only add decimal point if number doesn't have one already.
-                    if (!this.current.secondOperand) {
-                        // if blank, add zero first.
-                        this.current.secondOperand = '0';
-                    }
+                    
                     this.current.secondOperand += '.';
                 }
             }
             else {
+                if (!this.current.firstOperand) {
+                    // if blank, add zero first.
+                    this.current.firstOperand = '0';
+                }
                 if (!this.current.firstOperand.includes('.')) {
                     // only add decimal point if number doesn't have one already.
-                    if (!this.current.firstOperand) {
-                        // if blank, add zero first.
-                        this.current.firstOperand = '0';
-                    }
                     this.current.firstOperand += '.';
                 }
             }

@@ -282,22 +282,22 @@ var CalculatorComponent = /** @class */ (function () {
         }
         else if (input == '.') {
             if (this.current.operator) {
-                if (!this.current.secondOperand.includes('.')) {
+                if (!this.current.secondOperand) {
+                    // if blank, add zero first.
+                    this.current.secondOperand = '0';
+                }
+                if (this.current.secondOperand && !this.current.secondOperand.includes('.')) {
                     // only add decimal point if number doesn't have one already.
-                    if (!this.current.secondOperand) {
-                        // if blank, add zero first.
-                        this.current.secondOperand = '0';
-                    }
                     this.current.secondOperand += '.';
                 }
             }
             else {
+                if (!this.current.firstOperand) {
+                    // if blank, add zero first.
+                    this.current.firstOperand = '0';
+                }
                 if (!this.current.firstOperand.includes('.')) {
                     // only add decimal point if number doesn't have one already.
-                    if (!this.current.firstOperand) {
-                        // if blank, add zero first.
-                        this.current.firstOperand = '0';
-                    }
                     this.current.firstOperand += '.';
                 }
             }
@@ -440,7 +440,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Jesse\source\repos\Calculator\Calculator\ClientApp\main.ts */"./main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Jesse\Documents\Utils\JB-Calculator\Calculator\ClientApp\main.ts */"./main.ts");
 
 
 /***/ })

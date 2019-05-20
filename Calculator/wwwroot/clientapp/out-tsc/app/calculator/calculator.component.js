@@ -23,18 +23,18 @@ var CalculatorComponent = /** @class */ (function () {
             _this.current.firstOperand = calc.result.toString();
         });
     };
+    // Allow keyboard shortcuts.
     CalculatorComponent.prototype.handleKeyboardEvent = function (event) {
         var key = event.key;
+        // only pass allowed keys
         if (this.allowed.includes(key)) {
             this.onClick(key);
         }
         else if (key == 'Enter') {
             this.onClick('=');
         }
-        else if (key == 'Backspace') {
-            this.onClick(key);
-        }
     };
+    // handle button presses
     CalculatorComponent.prototype.onClick = function (input) {
         if (!isNaN(Number(input))) {
             // If a number, add to the appropriate operand.
@@ -48,12 +48,21 @@ var CalculatorComponent = /** @class */ (function () {
         else if (input == '.') {
             if (this.current.operator) {
                 if (!this.current.secondOperand.includes('.')) {
-                    // only add if first . this number
+                    // only add decimal point if number doesn't have one already.
+                    if (!this.current.secondOperand) {
+                        // if blank, add zero first.
+                        this.current.secondOperand = '0';
+                    }
                     this.current.secondOperand += '.';
                 }
             }
             else {
                 if (!this.current.firstOperand.includes('.')) {
+                    // only add decimal point if number doesn't have one already.
+                    if (!this.current.firstOperand) {
+                        // if blank, add zero first.
+                        this.current.firstOperand = '0';
+                    }
                     this.current.firstOperand += '.';
                 }
             }
@@ -63,6 +72,7 @@ var CalculatorComponent = /** @class */ (function () {
             this.solve('');
         }
         else if (input == 'A') {
+            // clear current operation
             this.current = new Calculation();
         }
         else if (input == 'C') {
@@ -109,6 +119,7 @@ var CalculatorComponent = /** @class */ (function () {
             result = num;
         }
         else {
+            // append element to end of string
             result = text + num;
         }
         return result;
